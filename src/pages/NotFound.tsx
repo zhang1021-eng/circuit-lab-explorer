@@ -1,5 +1,5 @@
 
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 const NotFound = () => {
@@ -7,7 +7,7 @@ const NotFound = () => {
     <div className="min-h-screen flex flex-col items-center justify-center bg-circuit-bg text-white p-6">
       <h1 className="text-4xl font-bold mb-4">404 - 页面未找到</h1>
       <p className="text-xl mb-8">您正在寻找的页面不存在。</p>
-      <Link href="/">
+      <Link to="/">
         <Button>返回主页</Button>
       </Link>
     </div>

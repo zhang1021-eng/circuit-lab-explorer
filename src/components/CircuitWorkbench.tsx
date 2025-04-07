@@ -6,21 +6,25 @@ import QuickExperimentSelector from './QuickExperimentSelector';
 import GuidanceModule from './GuidanceModule';
 import { Button } from '@/components/ui/button';
 import { Menu } from 'lucide-react';
-import Link from 'next/link';
+import { Link, useSearchParams } from 'react-router-dom';
 
 interface CircuitWorkbenchProps {
   initialExperiment?: string | null;
 }
 
 const CircuitWorkbench = ({ initialExperiment = null }: CircuitWorkbenchProps) => {
+  const [searchParams] = useSearchParams();
   const [currentInstrument, setCurrentInstrument] = useState<'oscilloscope' | 'multimeter' | null>(null);
   const [currentExperiment, setCurrentExperiment] = useState<string | null>(initialExperiment);
 
   useEffect(() => {
-    if (initialExperiment) {
+    const experimentId = searchParams.get('experimentId');
+    if (experimentId) {
+      setCurrentExperiment(experimentId);
+    } else if (initialExperiment) {
       setCurrentExperiment(initialExperiment);
     }
-  }, [initialExperiment]);
+  }, [searchParams, initialExperiment]);
 
   const handleExperimentSelect = (experimentId: string) => {
     setCurrentExperiment(experimentId);
@@ -37,7 +41,7 @@ const CircuitWorkbench = ({ initialExperiment = null }: CircuitWorkbenchProps) =
         <h1 className="text-2xl font-bold">电路实验室探索者</h1>
         <div className="flex items-center gap-4">
           <QuickExperimentSelector onSelectExperiment={handleExperimentSelect} />
-          <Link href="/experiments">
+          <Link to="/experiments">
             <Button variant="outline" size="icon">
               <Menu size={18} />
             </Button>

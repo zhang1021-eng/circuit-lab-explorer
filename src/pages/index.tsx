@@ -1,18 +1,19 @@
 
 import CircuitWorkbench from '../components/CircuitWorkbench';
-import { useRouter } from 'next/router';
+import { useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 const Index = () => {
-  const router = useRouter();
+  const [searchParams] = useSearchParams();
   const [experimentId, setExperimentId] = useState<string | null>(null);
   
   useEffect(() => {
     // Check if an experiment ID was passed via query parameters
-    if (router.query.experimentId) {
-      setExperimentId(router.query.experimentId as string);
+    const expId = searchParams.get('experimentId');
+    if (expId) {
+      setExperimentId(expId);
     }
-  }, [router.query]);
+  }, [searchParams]);
   
   return <CircuitWorkbench initialExperiment={experimentId} />;
 };
