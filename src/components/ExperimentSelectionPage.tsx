@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Search } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/router';
 
 const experiments = [
   {
@@ -55,7 +55,7 @@ const ExperimentSelectionPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedExperiment, setSelectedExperiment] = useState<string | null>(null);
-  const navigate = useNavigate();
+  const router = useRouter();
   
   const filteredExperiments = experiments.filter(exp => {
     const matchesSearch = exp.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -67,7 +67,10 @@ const ExperimentSelectionPage = () => {
   
   const handleStartExperiment = () => {
     if (selectedExperiment) {
-      navigate('/', { state: { experimentId: selectedExperiment } });
+      router.push({
+        pathname: '/',
+        query: { experimentId: selectedExperiment }
+      });
     }
   };
   

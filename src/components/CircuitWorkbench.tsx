@@ -6,7 +6,7 @@ import QuickExperimentSelector from './QuickExperimentSelector';
 import GuidanceModule from './GuidanceModule';
 import { Button } from '@/components/ui/button';
 import { Menu } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 interface CircuitWorkbenchProps {
   initialExperiment?: string | null;
@@ -37,7 +37,7 @@ const CircuitWorkbench = ({ initialExperiment = null }: CircuitWorkbenchProps) =
         <h1 className="text-2xl font-bold">电路实验室探索者</h1>
         <div className="flex items-center gap-4">
           <QuickExperimentSelector onSelectExperiment={handleExperimentSelect} />
-          <Link to="/experiments">
+          <Link href="/experiments">
             <Button variant="outline" size="icon">
               <Menu size={18} />
             </Button>
