@@ -1,14 +1,20 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import CircuitWorkbench from '../components/CircuitWorkbench';
+import { useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 const Index = () => {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
-    </div>
-  );
+  const location = useLocation();
+  const [experimentId, setExperimentId] = useState<string | null>(null);
+  
+  useEffect(() => {
+    // Check if an experiment ID was passed via navigation state
+    if (location.state && location.state.experimentId) {
+      setExperimentId(location.state.experimentId);
+    }
+  }, [location]);
+  
+  return <CircuitWorkbench initialExperiment={experimentId} />;
 };
 
 export default Index;
