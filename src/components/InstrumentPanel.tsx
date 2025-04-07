@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Oscilloscope from './instruments/Oscilloscope';
 import Multimeter from './instruments/Multimeter';
 import { Button } from '@/components/ui/button';
-import { Waveform, Gauge } from 'lucide-react';
+import { AudioWaveform, Gauge } from 'lucide-react';
 
 interface InstrumentPanelProps {
   currentInstrument: 'oscilloscope' | 'multimeter' | null;
@@ -21,7 +21,7 @@ const InstrumentPanel = ({ currentInstrument, onInstrumentChange }: InstrumentPa
             onClick={() => onInstrumentChange('oscilloscope')}
             className="flex items-center gap-2"
           >
-            <Waveform size={18} />
+            <AudioWaveform size={18} />
             Oscilloscope
           </Button>
           
