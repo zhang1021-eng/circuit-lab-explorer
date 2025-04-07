@@ -24,7 +24,7 @@ const CircuitWorkbench = ({ initialExperiment = null }: CircuitWorkbenchProps) =
 
   const handleExperimentSelect = (experimentId: string) => {
     setCurrentExperiment(experimentId);
-    console.log(`Loading experiment: ${experimentId}`);
+    console.log(`加载实验: ${experimentId}`);
   };
 
   const handleInstrumentChange = (instrument: 'oscilloscope' | 'multimeter' | null) => {
@@ -34,7 +34,7 @@ const CircuitWorkbench = ({ initialExperiment = null }: CircuitWorkbenchProps) =
   return (
     <div className="flex flex-col h-screen">
       <div className="bg-circuit-bg text-white p-4 flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Circuit Lab Explorer</h1>
+        <h1 className="text-2xl font-bold">电路实验室探索者</h1>
         <div className="flex items-center gap-4">
           <QuickExperimentSelector onSelectExperiment={handleExperimentSelect} />
           <Link to="/experiments">

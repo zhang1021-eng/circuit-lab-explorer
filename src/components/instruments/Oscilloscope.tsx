@@ -27,8 +27,8 @@ const Oscilloscope = () => {
   return (
     <div className="h-full bg-circuit-oscilloscope-bg p-4 flex flex-col">
       <div className="mb-4">
-        <h3 className="text-white text-lg mb-2">Digital Oscilloscope</h3>
-        <p className="text-gray-400 text-sm">Visualize time-varying signals</p>
+        <h3 className="text-white text-lg mb-2">数字示波器</h3>
+        <p className="text-gray-400 text-sm">可视化时变信号</p>
       </div>
       
       <div className="flex-1 oscilloscope-display rounded-lg mb-4 relative">
@@ -44,14 +44,14 @@ const Oscilloscope = () => {
         
         {/* Overlay information */}
         <div className="absolute top-2 right-2 text-green-500 text-xs font-mono">
-          <div>{timeBase} ms/div</div>
-          <div>{voltageScale} V/div</div>
+          <div>{timeBase} 毫秒/格</div>
+          <div>{voltageScale} 伏/格</div>
         </div>
       </div>
       
       <div className="grid grid-cols-2 gap-4 bg-gray-800 p-4 rounded-lg">
         <div>
-          <label className="text-gray-300 text-sm block mb-2">Time Base</label>
+          <label className="text-gray-300 text-sm block mb-2">时基</label>
           <Slider 
             value={[timeBase]} 
             min={0.1} 
@@ -59,11 +59,11 @@ const Oscilloscope = () => {
             step={0.1} 
             onValueChange={(values) => setTimeBase(values[0])} 
           />
-          <div className="text-gray-400 text-xs mt-1">{timeBase} ms/div</div>
+          <div className="text-gray-400 text-xs mt-1">{timeBase} 毫秒/格</div>
         </div>
         
         <div>
-          <label className="text-gray-300 text-sm block mb-2">Voltage Scale</label>
+          <label className="text-gray-300 text-sm block mb-2">电压刻度</label>
           <Slider 
             value={[voltageScale]} 
             min={0.1} 
@@ -71,11 +71,11 @@ const Oscilloscope = () => {
             step={0.1} 
             onValueChange={(values) => setVoltageScale(values[0])} 
           />
-          <div className="text-gray-400 text-xs mt-1">{voltageScale} V/div</div>
+          <div className="text-gray-400 text-xs mt-1">{voltageScale} 伏/格</div>
         </div>
         
         <div>
-          <label className="text-gray-300 text-sm block mb-2">Trigger Level</label>
+          <label className="text-gray-300 text-sm block mb-2">触发电平</label>
           <Slider 
             value={[triggerLevel]} 
             min={-5} 
@@ -83,7 +83,7 @@ const Oscilloscope = () => {
             step={0.1} 
             onValueChange={(values) => setTriggerLevel(values[0])} 
           />
-          <div className="text-gray-400 text-xs mt-1">{triggerLevel.toFixed(1)} V</div>
+          <div className="text-gray-400 text-xs mt-1">{triggerLevel.toFixed(1)} 伏</div>
         </div>
         
         <div className="flex items-end">
@@ -92,7 +92,7 @@ const Oscilloscope = () => {
             variant={running ? "destructive" : "default"}
             className="w-full"
           >
-            {running ? "Stop" : "Run"}
+            {running ? "停止" : "运行"}
           </Button>
         </div>
       </div>

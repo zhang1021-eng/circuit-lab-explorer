@@ -9,45 +9,45 @@ import { useNavigate } from 'react-router-dom';
 const experiments = [
   {
     id: 'rc-filter',
-    name: 'RC Filter Circuit',
-    description: 'Learn about RC filters and frequency response',
+    name: 'RC 滤波电路',
+    description: '学习RC滤波器和频率响应',
     category: 'basics',
-    difficulty: 'beginner'
+    difficulty: '初级'
   },
   {
     id: 'led-circuit',
-    name: 'LED Circuit',
-    description: 'Build and test a simple LED circuit',
+    name: 'LED 电路',
+    description: '搭建和测试简单的LED电路',
     category: 'basics',
-    difficulty: 'beginner'
+    difficulty: '初级'
   },
   {
     id: 'op-amp',
-    name: 'Op-Amp Circuit',
-    description: 'Explore operational amplifier configurations',
+    name: '运放电路',
+    description: '探索运算放大器配置',
     category: 'analog',
-    difficulty: 'intermediate'
+    difficulty: '中级'
   },
   {
     id: 'rectifier',
-    name: 'Diode Rectifier',
-    description: 'Convert AC to DC with a diode bridge',
+    name: '二极管整流器',
+    description: '用二极管桥将交流转换为直流',
     category: 'analog',
-    difficulty: 'intermediate'
+    difficulty: '中级'
   },
   {
     id: 'astable-555',
-    name: '555 Timer Oscillator',
-    description: 'Build an astable multivibrator with a 555 timer',
+    name: '555定时器振荡器',
+    description: '使用555定时器构建一个多谐振荡器',
     category: 'digital',
-    difficulty: 'intermediate'
+    difficulty: '中级'
   },
   {
     id: 'logic-gates',
-    name: 'Logic Gates',
-    description: 'Explore basic digital logic gates',
+    name: '逻辑门',
+    description: '探索基本数字逻辑门',
     category: 'digital',
-    difficulty: 'beginner'
+    difficulty: '初级'
   }
 ];
 
@@ -74,14 +74,14 @@ const ExperimentSelectionPage = () => {
   return (
     <div className="min-h-screen bg-circuit-bg text-white p-6">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-3xl font-bold mb-6">Circuit Lab Experiments</h1>
+        <h1 className="text-3xl font-bold mb-6">电路实验</h1>
         
         <div className="flex gap-4 mb-6">
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
             <Input
               className="pl-10 bg-gray-800 text-white border-gray-700"
-              placeholder="Search experiments..."
+              placeholder="搜索实验..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -89,10 +89,10 @@ const ExperimentSelectionPage = () => {
           
           <Tabs defaultValue="all" value={selectedCategory} onValueChange={setSelectedCategory}>
             <TabsList>
-              <TabsTrigger value="all">All</TabsTrigger>
-              <TabsTrigger value="basics">Basics</TabsTrigger>
-              <TabsTrigger value="analog">Analog</TabsTrigger>
-              <TabsTrigger value="digital">Digital</TabsTrigger>
+              <TabsTrigger value="all">全部</TabsTrigger>
+              <TabsTrigger value="basics">基础</TabsTrigger>
+              <TabsTrigger value="analog">模拟</TabsTrigger>
+              <TabsTrigger value="digital">数字</TabsTrigger>
             </TabsList>
           </Tabs>
         </div>
@@ -113,7 +113,8 @@ const ExperimentSelectionPage = () => {
                   {experiment.difficulty}
                 </span>
                 <span className="text-sm text-blue-400">
-                  {experiment.category}
+                  {experiment.category === 'basics' ? '基础' : 
+                   experiment.category === 'analog' ? '模拟' : '数字'}
                 </span>
               </div>
             </div>
@@ -122,7 +123,7 @@ const ExperimentSelectionPage = () => {
         
         {filteredExperiments.length === 0 && (
           <div className="text-center py-8">
-            <p>No experiments found matching your criteria.</p>
+            <p>没有找到符合条件的实验。</p>
           </div>
         )}
         
@@ -132,7 +133,7 @@ const ExperimentSelectionPage = () => {
             disabled={!selectedExperiment}
             onClick={handleStartExperiment}
           >
-            Start Experiment
+            开始实验
           </Button>
         </div>
       </div>

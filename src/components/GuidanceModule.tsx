@@ -24,52 +24,52 @@ const GuidanceModule = ({ experimentId, currentInstrument }: GuidanceModuleProps
       const guidanceSteps: Record<string, GuidanceStep[]> = {
         'rc-filter': [
           {
-            title: 'Setup the RC Filter Circuit',
-            description: 'Connect the resistor and capacitor in series with the voltage source.',
+            title: '搭建RC滤波电路',
+            description: '将电阻和电容串联连接到电压源。',
             instrumentRequired: null,
           },
           {
-            title: 'Measure Input Voltage',
-            description: 'Use the multimeter to measure the input voltage across the circuit.',
+            title: '测量输入电压',
+            description: '使用万用表测量电路的输入电压。',
             instrumentRequired: 'multimeter',
           },
           {
-            title: 'Observe the Filter Response',
-            description: 'Use the oscilloscope to observe how the circuit filters different frequencies.',
+            title: '观察滤波器响应',
+            description: '使用示波器观察电路如何过滤不同频率。',
             instrumentRequired: 'oscilloscope',
           }
         ],
         'led-circuit': [
           {
-            title: 'Connect the LED Circuit',
-            description: 'Connect the LED with a current-limiting resistor to the voltage source.',
+            title: '连接LED电路',
+            description: '将LED与限流电阻连接到电压源。',
             instrumentRequired: null,
           },
           {
-            title: 'Measure Voltage Drop',
-            description: 'Use the multimeter to measure the voltage drop across the LED.',
+            title: '测量压降',
+            description: '使用万用表测量LED上的压降。',
             instrumentRequired: 'multimeter',
           },
           {
-            title: 'Measure Current Flow',
-            description: 'Use the multimeter to measure the current flowing through the LED.',
+            title: '测量电流',
+            description: '使用万用表测量通过LED的电流。',
             instrumentRequired: 'multimeter',
           }
         ],
         'op-amp': [
           {
-            title: 'Build the Op-Amp Circuit',
-            description: 'Connect the operational amplifier according to the given configuration.',
+            title: '搭建运放电路',
+            description: '根据给定的配置连接运算放大器。',
             instrumentRequired: null,
           },
           {
-            title: 'Apply Input Signal',
-            description: 'Apply a small input signal to observe amplification.',
+            title: '应用输入信号',
+            description: '应用小信号输入以观察放大效果。',
             instrumentRequired: null,
           },
           {
-            title: 'Observe Output Waveform',
-            description: 'Use the oscilloscope to observe the amplified output waveform.',
+            title: '观察输出波形',
+            description: '使用示波器观察放大后的输出波形。',
             instrumentRequired: 'oscilloscope',
           }
         ]
@@ -79,8 +79,8 @@ const GuidanceModule = ({ experimentId, currentInstrument }: GuidanceModuleProps
       setCurrentStep(0);
     } else {
       setSteps([{
-        title: 'Select an Experiment',
-        description: 'Choose an experiment from the dropdown menu to begin.',
+        title: '选择实验',
+        description: '从下拉菜单中选择一个实验开始。',
         instrumentRequired: null,
       }]);
     }
@@ -101,7 +101,7 @@ const GuidanceModule = ({ experimentId, currentInstrument }: GuidanceModuleProps
   const currentStepData = steps[currentStep];
   
   if (!currentStepData) {
-    return <div>No guidance available.</div>;
+    return <div>没有可用的指导。</div>;
   }
 
   const isInstrumentRequired = currentStepData.instrumentRequired !== null;
@@ -115,7 +115,7 @@ const GuidanceModule = ({ experimentId, currentInstrument }: GuidanceModuleProps
         
         {isInstrumentRequired && !isCorrectInstrument && (
           <div className="mt-2 text-yellow-400 text-sm">
-            This step requires the {currentStepData.instrumentRequired}. Please select it from the instruments panel.
+            此步骤需要使用{currentStepData.instrumentRequired === 'oscilloscope' ? '示波器' : '万用表'}。请从仪器面板中选择它。
           </div>
         )}
       </div>
@@ -128,7 +128,7 @@ const GuidanceModule = ({ experimentId, currentInstrument }: GuidanceModuleProps
           disabled={currentStep === 0}
         >
           <ChevronLeft size={16} />
-          Previous
+          上一步
         </Button>
         
         <div className="text-sm text-gray-400">
@@ -141,7 +141,7 @@ const GuidanceModule = ({ experimentId, currentInstrument }: GuidanceModuleProps
           onClick={handleNextStep}
           disabled={currentStep === steps.length - 1}
         >
-          Next
+          下一步
           <ChevronRight size={16} />
         </Button>
       </div>

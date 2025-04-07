@@ -14,7 +14,7 @@ const InstrumentPanel = ({ currentInstrument, onInstrumentChange }: InstrumentPa
   return (
     <div className="flex flex-col h-full">
       <div className="bg-gray-800 p-4 border-b border-gray-700">
-        <h2 className="text-xl font-semibold text-white mb-4">Instruments</h2>
+        <h2 className="text-xl font-semibold text-white mb-4">仪器</h2>
         <div className="flex gap-2">
           <Button 
             variant={currentInstrument === 'oscilloscope' ? 'default' : 'outline'} 
@@ -22,7 +22,7 @@ const InstrumentPanel = ({ currentInstrument, onInstrumentChange }: InstrumentPa
             className="flex items-center gap-2"
           >
             <AudioWaveform size={18} />
-            Oscilloscope
+            示波器
           </Button>
           
           <Button 
@@ -31,7 +31,7 @@ const InstrumentPanel = ({ currentInstrument, onInstrumentChange }: InstrumentPa
             className="flex items-center gap-2"
           >
             <Gauge size={18} />
-            Multimeter
+            万用表
           </Button>
         </div>
       </div>
@@ -42,8 +42,8 @@ const InstrumentPanel = ({ currentInstrument, onInstrumentChange }: InstrumentPa
         {!currentInstrument && (
           <div className="h-full flex items-center justify-center text-gray-400 p-4 text-center">
             <div>
-              <p className="mb-2">Select an instrument to begin</p>
-              <p className="text-sm">Use the oscilloscope to view waveforms or the multimeter to measure circuit values</p>
+              <p className="mb-2">选择一个仪器开始</p>
+              <p className="text-sm">使用示波器查看波形或使用万用表测量电路数值</p>
             </div>
           </div>
         )}

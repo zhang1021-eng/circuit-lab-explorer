@@ -14,9 +14,9 @@ interface QuickExperimentSelectorProps {
 }
 
 const experiments = [
-  { id: 'rc-filter', name: 'RC Filter Circuit' },
-  { id: 'led-circuit', name: 'LED Circuit' },
-  { id: 'op-amp', name: 'Op-Amp Circuit' },
+  { id: 'rc-filter', name: 'RC 滤波电路' },
+  { id: 'led-circuit', name: 'LED 电路' },
+  { id: 'op-amp', name: '运放电路' },
 ];
 
 const QuickExperimentSelector = ({ onSelectExperiment }: QuickExperimentSelectorProps) => {
@@ -33,7 +33,7 @@ const QuickExperimentSelector = ({ onSelectExperiment }: QuickExperimentSelector
         <Button variant="outline" className="flex items-center gap-2">
           {selectedExperiment ? 
             experiments.find(exp => exp.id === selectedExperiment)?.name : 
-            'Select Experiment'
+            '选择实验'
           }
           <ChevronDown size={16} />
         </Button>

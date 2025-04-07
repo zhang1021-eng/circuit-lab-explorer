@@ -13,19 +13,19 @@ const CircuitDisplay = ({ experimentId }: CircuitDisplayProps) => {
       // In a real implementation, we would load circuit data from a database or API
       const demoCircuits: Record<string, any> = {
         'rc-filter': {
-          name: 'RC Filter Circuit',
-          description: 'A simple RC low pass filter',
-          components: ['resistor', 'capacitor', 'voltage source']
+          name: 'RC 滤波电路',
+          description: '一个简单的RC低通滤波器',
+          components: ['电阻', '电容', '电压源']
         },
         'led-circuit': {
-          name: 'LED Circuit',
-          description: 'A simple LED circuit with a current-limiting resistor',
-          components: ['resistor', 'led', 'voltage source']
+          name: 'LED 电路',
+          description: '一个带有限流电阻的简单LED电路',
+          components: ['电阻', 'LED', '电压源']
         },
         'op-amp': {
-          name: 'Op-Amp Circuit',
-          description: 'Basic operational amplifier configuration',
-          components: ['op-amp', 'resistor', 'resistor', 'voltage source']
+          name: '运放电路',
+          description: '基本运算放大器配置',
+          components: ['运算放大器', '电阻', '电阻', '电压源']
         }
       };
       
@@ -33,15 +33,15 @@ const CircuitDisplay = ({ experimentId }: CircuitDisplayProps) => {
     } else {
       // Default circuit when no experiment is selected
       setCircuit({
-        name: 'Default Circuit',
-        description: 'Select an experiment to begin',
-        components: ['voltage source']
+        name: '默认电路',
+        description: '选择一个实验开始',
+        components: ['电压源']
       });
     }
   }, [experimentId]);
   
   if (!circuit) {
-    return <div className="flex items-center justify-center h-full">Loading circuit...</div>;
+    return <div className="flex items-center justify-center h-full">加载电路中...</div>;
   }
 
   return (
@@ -55,24 +55,24 @@ const CircuitDisplay = ({ experimentId }: CircuitDisplayProps) => {
         {/* This would be replaced with an actual circuit rendering component */}
         <div className="absolute inset-0 flex items-center justify-center text-white text-opacity-60 text-lg">
           <div className="text-center">
-            <p>Circuit Visualization</p>
-            <p className="text-sm mt-2">{circuit.components.join(', ')}</p>
+            <p>电路可视化</p>
+            <p className="text-sm mt-2">{circuit.components.join('，')}</p>
             
             {/* Placeholder circuit elements */}
             <div className="mt-8 flex items-center justify-center gap-6">
-              {circuit.components.includes('voltage source') && (
+              {circuit.components.includes('电压源') && (
                 <div className="w-12 h-12 rounded-full border-2 border-circuit-wire-red flex items-center justify-center text-circuit-wire-red">
                   <div>V</div>
                 </div>
               )}
               
-              {circuit.components.includes('resistor') && (
+              {circuit.components.includes('电阻') && (
                 <div className="w-24 h-8 border-2 border-circuit-copper bg-gray-700 flex items-center justify-center">
                   <div className="text-white">R</div>
                 </div>
               )}
               
-              {circuit.components.includes('capacitor') && (
+              {circuit.components.includes('电容') && (
                 <div className="flex items-center">
                   <div className="w-2 h-12 bg-circuit-copper"></div>
                   <div className="w-2 h-12 bg-transparent"></div>
@@ -80,13 +80,13 @@ const CircuitDisplay = ({ experimentId }: CircuitDisplayProps) => {
                 </div>
               )}
               
-              {circuit.components.includes('led') && (
+              {circuit.components.includes('LED') && (
                 <div className="w-8 h-8 rounded-full border-2 border-circuit-wire-green flex items-center justify-center text-circuit-wire-green animate-pulse-glow">
                   <div>LED</div>
                 </div>
               )}
               
-              {circuit.components.includes('op-amp') && (
+              {circuit.components.includes('运算放大器') && (
                 <div className="w-16 h-16 border-2 border-circuit-wire-blue bg-gray-800 flex items-center justify-center text-circuit-wire-blue transform rotate-90">
                   <div>▶</div>
                 </div>

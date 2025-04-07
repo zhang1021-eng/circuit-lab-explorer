@@ -54,8 +54,8 @@ const Multimeter = () => {
   return (
     <div className="h-full bg-circuit-multimeter-bg p-4 flex flex-col">
       <div className="mb-4">
-        <h3 className="text-white text-lg mb-2">Digital Multimeter</h3>
-        <p className="text-gray-400 text-sm">Measure voltage, current and resistance</p>
+        <h3 className="text-white text-lg mb-2">数字万用表</h3>
+        <p className="text-gray-400 text-sm">测量电压、电流和电阻</p>
       </div>
       
       <div className="bg-black rounded-lg p-4 mb-6">
@@ -67,64 +67,64 @@ const Multimeter = () => {
       
       <Tabs defaultValue="dcv" className="flex-1" onValueChange={(v) => handleModeChange(v as MeasurementMode)}>
         <TabsList className="grid grid-cols-5 mb-4">
-          <TabsTrigger value="dcv">DC V</TabsTrigger>
-          <TabsTrigger value="acv">AC V</TabsTrigger>
-          <TabsTrigger value="dci">DC A</TabsTrigger>
-          <TabsTrigger value="aci">AC A</TabsTrigger>
-          <TabsTrigger value="res">Ω</TabsTrigger>
+          <TabsTrigger value="dcv">直流电压</TabsTrigger>
+          <TabsTrigger value="acv">交流电压</TabsTrigger>
+          <TabsTrigger value="dci">直流电流</TabsTrigger>
+          <TabsTrigger value="aci">交流电流</TabsTrigger>
+          <TabsTrigger value="res">电阻</TabsTrigger>
         </TabsList>
         
         <TabsContent value="dcv" className="h-full">
           <div className="bg-gray-800 p-4 rounded-lg text-gray-300">
-            <h4 className="font-medium mb-2">DC Voltage</h4>
-            <p className="text-sm mb-4">Measures direct current voltage in the circuit.</p>
+            <h4 className="font-medium mb-2">直流电压</h4>
+            <p className="text-sm mb-4">测量电路中的直流电压。</p>
             <div className="flex justify-center mb-4">
               <div className="w-24 h-24 rotary-knob">
                 <div className="knob-marker" style={{ transform: 'rotate(90deg)' }}></div>
               </div>
             </div>
             <div className="flex justify-center">
-              <Button onClick={simulateMeasurement}>Measure</Button>
+              <Button onClick={simulateMeasurement}>测量</Button>
             </div>
           </div>
         </TabsContent>
         
         <TabsContent value="acv" className="h-full">
           <div className="bg-gray-800 p-4 rounded-lg text-gray-300">
-            <h4 className="font-medium mb-2">AC Voltage</h4>
-            <p className="text-sm mb-4">Measures alternating current voltage in the circuit.</p>
+            <h4 className="font-medium mb-2">交流电压</h4>
+            <p className="text-sm mb-4">测量电路中的交流电压。</p>
             <div className="flex justify-center">
-              <Button onClick={simulateMeasurement}>Measure</Button>
+              <Button onClick={simulateMeasurement}>测量</Button>
             </div>
           </div>
         </TabsContent>
         
         <TabsContent value="dci" className="h-full">
           <div className="bg-gray-800 p-4 rounded-lg text-gray-300">
-            <h4 className="font-medium mb-2">DC Current</h4>
-            <p className="text-sm mb-4">Measures direct current flowing through the circuit.</p>
+            <h4 className="font-medium mb-2">直流电流</h4>
+            <p className="text-sm mb-4">测量流经电路的直流电流。</p>
             <div className="flex justify-center">
-              <Button onClick={simulateMeasurement}>Measure</Button>
+              <Button onClick={simulateMeasurement}>测量</Button>
             </div>
           </div>
         </TabsContent>
         
         <TabsContent value="aci" className="h-full">
           <div className="bg-gray-800 p-4 rounded-lg text-gray-300">
-            <h4 className="font-medium mb-2">AC Current</h4>
-            <p className="text-sm mb-4">Measures alternating current flowing through the circuit.</p>
+            <h4 className="font-medium mb-2">交流电流</h4>
+            <p className="text-sm mb-4">测量流经电路的交流电流。</p>
             <div className="flex justify-center">
-              <Button onClick={simulateMeasurement}>Measure</Button>
+              <Button onClick={simulateMeasurement}>测量</Button>
             </div>
           </div>
         </TabsContent>
         
         <TabsContent value="res" className="h-full">
           <div className="bg-gray-800 p-4 rounded-lg text-gray-300">
-            <h4 className="font-medium mb-2">Resistance</h4>
-            <p className="text-sm mb-4">Measures resistance of components in ohms.</p>
+            <h4 className="font-medium mb-2">电阻</h4>
+            <p className="text-sm mb-4">测量组件的电阻（欧姆）。</p>
             <div className="flex justify-center">
-              <Button onClick={simulateMeasurement}>Measure</Button>
+              <Button onClick={simulateMeasurement}>测量</Button>
             </div>
           </div>
         </TabsContent>
